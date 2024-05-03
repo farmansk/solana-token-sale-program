@@ -6,8 +6,7 @@ import { Connection, Keypair, PublicKey, LAMPORTS_PER_SOL, clusterApiUrl } from 
 import { Token, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { updateEnv } from "./utils";
 
-const setup = async () => {  
-  
+const setup = async () => {
   console.log("1. Setup Accounts");
 
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
@@ -17,7 +16,7 @@ const setup = async () => {
     publicKey: sellerPubkey.toBytes(),
     secretKey: sellerPrivateKey,
   });
-  
+
   const buyerPubkey = new PublicKey(process.env.BUYER_PUBLIC_KEY!);
 
   console.log("Create Token Mint Account...\n");

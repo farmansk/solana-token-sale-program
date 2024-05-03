@@ -71,10 +71,9 @@ const transaction = async () => {
       createAccountInfo(TOKEN_PROGRAM_ID, false, false),
       createAccountInfo(PDA[0], false, false),
     ],
-    data: Buffer.from(Uint8Array.of(instruction, ...new BN(number_of_tokens).toArray("le",8))),
+    data: Buffer.from(Uint8Array.of(instruction, ...new BN(number_of_tokens).toArray("le", 8))),
   });
 
-    
   const tx = new Transaction().add(buyTokenIx);
 
   await connection.sendTransaction(tx, [buyerKeypair], {

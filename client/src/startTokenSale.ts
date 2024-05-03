@@ -25,7 +25,7 @@ import { AccountLayout, Token, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 
 type InstructionNumber = 0 | 1 | 2;
 
-const transaction = async () => {  
+const transaction = async () => {
   console.log("2. Start Token Sale");
 
   //phase1 (setup Transaction & send Transaction)
@@ -43,7 +43,7 @@ const transaction = async () => {
   console.log("sellerTokenAccountPubkey: ", sellerTokenAccountPubkey.toBase58());
   const instruction: InstructionNumber = 0;
   const amountOfTokenWantToSale = 1000;
-  const perTokenPrice = 0.1*LAMPORTS_PER_SOL;
+  const perTokenPrice = 0.0001 * LAMPORTS_PER_SOL;
 
   const tempTokenAccountKeypair = new Keypair();
   const createTempTokenAccountIx = SystemProgram.createAccount({
@@ -88,9 +88,7 @@ const transaction = async () => {
       createAccountInfo(SYSVAR_RENT_PUBKEY, false, false),
       createAccountInfo(TOKEN_PROGRAM_ID, false, false),
     ],
-    data: Buffer.from(
-      Uint8Array.of(instruction, ...new BN(perTokenPrice).toArray("le", 8))
-    ),
+    data: Buffer.from(Uint8Array.of(instruction, ...new BN(perTokenPrice).toArray("le", 8))),
   });
 
   //make transaction with several instructions(ix)
