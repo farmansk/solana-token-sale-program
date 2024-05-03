@@ -33,7 +33,7 @@ const transaction = async () => {
     secretKey: buyerPrivateKey,
   });
 
-  const number_of_tokens = 100;
+  const number_of_tokens = 1000;
 
   const tokenPubkey = new PublicKey(process.env.TOKEN_PUBKEY!);
   const tokenSaleProgramAccountPubkey = new PublicKey(process.env.TOKEN_SALE_PROGRAM_ACCOUNT_PUBKEY!);
